@@ -31,7 +31,7 @@ app.post('/details', (req, res) =>
     const pwd = process.env.EMAIL_PASS
     let receiver = process.env.EMAIL_TO
     if('target' in req.body){
-        receiver=req.target;
+        receiver=req.body.target;
     }
     let transporter = nodemailer.createTransport({
         service: 'Gmail',
