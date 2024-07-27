@@ -26,9 +26,13 @@ const port = process.env.PORT || 3000;
 app.post('/details', (req, res) =>
 {
     const { title, message } = req.body;
+    
     const sender = process.env.EMAIL_USER
     const pwd = process.env.EMAIL_PASS
-    const receiver = process.env.EMAIL_TO
+    let receiver = process.env.EMAIL_TO
+    if('target' in req.body){
+        receiver=req.target;
+    }
     let transporter = nodemailer.createTransport({
         service: 'Gmail',
         secure: true,
