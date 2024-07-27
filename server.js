@@ -29,7 +29,7 @@ app.post('/details', (req, res) =>
     
     const sender = process.env.EMAIL_USER
     const pwd = process.env.EMAIL_PASS
-    let receiver = process.env.EMAIL_TO
+    let receiver =null;// process.env.EMAIL_TO
     if('target' in req.body){
         receiver=req.body.target;
     }
